@@ -18,21 +18,88 @@ pool.getConnection((err,connection)=>{
         return;
 });
 
-module.exports = pool;
 
+// Table for Admin
+pool.query(`CREATE TABLE ADMIN
+(
+    RegNo VARCHAR(21) PRIMARY KEY
+    Name VARCHAR(255) 
+    Email VARCHAR(255) 
+    Password VARCHAR(255)
+    Branch VARCHAR(255)   
+)`,
+function(err,results){
+    if(err)
+    console.log(err)
+    else
+    console,log(results)
+});
 
-// Table for student
-    
-// pool.query(`DROP TABLE ALL_USER`, function(err, res){
-//     if(err)
-//     console.log(err)
-//     else
-//     console.log(`TAble dropped`)
-// })
+//TABLE FOR USER
+pool.query(`CREATE TABLE USER
+( 
+  RegNo VARCHAR(21) PRIMARY KEY
+  Name VARCHAR(255)
+  Branch VARCHAR(255)
+  Email VARCHAR(255)
+  Password VARCHAR(255)
+  CV VARCHAR(255)
+  NoOfPlacements INT
+  Cgpa INT  
+)`,
+function(err,results){
+    if(err)
+    console.log(err)
+    else
+    console,log(results)
+});
 
-// pool.query(`CREATE TABLE ALL_USER (Email VARCHAR(50) NOT NULL PRIMARY KEY,Token VARCHAR(255),Password VARCHAR(255))`, function(err, results) {
-//     if(err)
-//     console.log(err)
-//     else
-//     console.log(results)
-// });
+//TABLE FOR LOG
+pool.query(`CREATE TABLE LOGGER
+(
+  Int auto increment
+  User id VARCHAR(255)
+  log VARCHAR(255)
+  Time stamp TIMESTAMP
+)`,
+function(err,results){
+    if(err)
+    console.log(err)
+    else
+    console,log(results)
+});
+
+//TABLE FOR COMPANY
+pool.query(`CREATE TABLE COMPANY
+(
+    Id VARCHAR(255) PRIMARY KEY
+    Date of visit DATE
+    Name VARCHAR(255)
+    Last date of apply DATE
+    Eligible branches VARCHAR(255)
+    Package offers INT
+    MINIMUM CGPA INT
+    Description VARCHAR(500)
+    PDF VARCHAR(1000)
+)`,
+function(err,results){
+    if(err)
+    console.log(err)
+    else
+    console,log(results)
+});
+
+//TABLE FOR APPLIED COMPANY
+pool.query(`CREATE TABLE APPLIED COMPANY
+(
+    COMPANY_ID VARCHAR(255) PRIMARY KEY
+	RegNo VARCHAR(21)
+	Status VARCHAR(255)
+)`,
+function(err,results){
+    if(err)
+    console.log(err)
+    else
+    console,log(results)
+});
+module.exports=pool;
