@@ -27,7 +27,7 @@ CREATE TABLE  USER LOGGER
   id Int auto increment 
   User id VARCHAR(255)
   log VARCHAR(255)
-  Time stamp TIMESTAMP
+  Time stamp DATETIME
   FOREIGN KEY(USER ID) REFERENCES USER(RegNo) ON DELETE CASCADE
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE  ADMIN LOGGER
   id Int auto increment 
   User id VARCHAR(255)
   log VARCHAR(255)
-  Time stamp TIMESTAMP
+  Time stamp DATETIME
   FOREIGN KEY(USER ID) REFERENCES ADMIN(RegNo) ON DELETE CASCADE
 );
 
