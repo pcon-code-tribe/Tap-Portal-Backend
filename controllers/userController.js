@@ -261,7 +261,7 @@ module.exports = {
 
           //CHECKING ELIGIBLITY FOR CGPA
           db.query(
-            `SELECT Cgpa FROM COMPANY WHERE Id = ? `,
+            `SELECT Min_CGPA FROM COMPANIES WHERE Id = ? `,
             [Company_id],
             async function (err, results) {
               console.log(results);
@@ -274,7 +274,7 @@ module.exports = {
               } else {
                 let status = true,
                 message;
-                const minCgpa = results.Cgpa;
+                const minCgpa = results.Min_CGPA;
                 if(minCgpa<=cgpa){
 
                   //CHECKING ELIGIBLITY FOR BRANCH
